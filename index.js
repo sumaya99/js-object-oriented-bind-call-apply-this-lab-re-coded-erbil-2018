@@ -1,13 +1,16 @@
-function justInvoke(fn){}
-
-function setThisWithCall(fn, thisValue, arg){}
 function justInvoke(fn) {
-  console.log(`my name is ${this.name}, hi!`);
+  return fn();
 }
- 
-let sally = {name: 'sally'}
- 
-greet.apply(sally)
-// my name is sally, hi!
- 
-greet.call(sally)
+
+function setThisWithCall(fn, thisValue, argument) {
+  return fn.call(thisValue, argument);
+}
+
+function setThisWithApply(fn, thisValue, ourArguments) {
+  return fn.apply(thisValue, ourArguments);
+}
+
+function returnNewFunctionOf(functionToBeCopied, thisValue) {
+  const copy = functionToBeCopied.bind(thisValue);
+  return copy;
+}
